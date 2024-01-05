@@ -38,6 +38,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 
 " Colorschemes:
+Plug 'rose-pine/vim'
 Plug 'morhetz/gruvbox'
 " Plug 'gruvbox-community/gruvbox'
 " Plug 'sainnhe/gruvbox-material'
@@ -49,12 +50,13 @@ Plug 'morhetz/gruvbox'
 " Other commands: :PlugInstall :PlugClean :PlugUpdate
 call plug#end()
 
-" GRUVBOX:
-" blue darkblue default delek desert elflord  evening industry koehler morning
-" murphy pablo peachpuff ron shine slate torte zellner
-colorscheme gruvbox
+
+" ColorSchemes:
+colorscheme rosepine
 set background=dark
 
+
+" Keymaps:
 :imap <C-l> <C-[>
 :imap kl <esc>
 :imap lk <esc>
@@ -97,7 +99,6 @@ let g:netrw_winsize = 25
   let g:airline_symbols.paste = '∥'
   let g:airline_symbols.spell = 'Ꞩ'
   let g:airline_symbols.notexists = 'Ɇ'
-  let g:airline_symbols.notexists = '∄'
   let g:airline_symbols.whitespace = 'Ξ'
 
   " powerline symbols
@@ -106,7 +107,7 @@ let g:netrw_winsize = 25
   let g:airline_right_sep = ''
   let g:airline_right_alt_sep = ''
   let g:airline_symbols.branch = ''
-  let g:airline_symbols.colnr = ' ℅:'
+  let g:airline_symbols.colnr = ' :'
   let g:airline_symbols.readonly = ''
   let g:airline_symbols.linenr = ' :'
   let g:airline_symbols.maxlinenr = '☰ '
@@ -124,7 +125,7 @@ let g:netrw_winsize = 25
 " CTRLP
 let g:ctrlp_working_path_mode = 'r'  " c = current directory, r = nearest ancestor that contains a .git folder
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|obj)|(\.(swp|ico|git|svn))$'
-let g:ctrlp_use_caching = 0
+let g:ctrlp_use_caching = 1
 " let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 nnoremap <leader>r :CtrlPMRU<CR>      " Recent Files
