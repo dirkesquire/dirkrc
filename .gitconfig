@@ -1,0 +1,20 @@
+[alias]
+st = status
+sts = status -s
+graph = log --graph --all
+la = log --pretty=format:'%C(yellow)%h %Cgreen%<(7)%cn %Cblue%>(12)%ai %Cred%d %Creset%s'
+lag = log --pretty=format:'%C(yellow)%h %Cgreen%<(7)%cn %Cblue%>(12)%ai %Cred%d %Creset%s' --graph
+laga = log --pretty=format:'%C(yellow)%h %Cgreen%<(7)%cn %Cblue%>(12)%ai %Cred%d %Creset%s' --graph --branches --remotes --tags
+lagas = log --pretty=format:'%C(yellow)%h %Cgreen%<(7)%cn %Cblue%>(12)%ai %Cred%d %Creset%s' --graph --branches --remotes --tags --decorate --stashes
+ld = log --pretty=format:"%C(yellow)%h\\ %C(green)%ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short --graph
+ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+fa = !git fetch --all && git laga
+stashlist = stash list --date=short
+
+[user]
+    name = Dirk Roeleveld
+    email = dirkroel@gmail.com
+[pull]
+	rebase = true
+[init]
+	defaultBranch = main
