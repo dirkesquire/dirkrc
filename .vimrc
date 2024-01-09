@@ -11,14 +11,17 @@ set noswapfile
 set nobackup
 set undodir=~/.vim/undodir
 set undofile
+set hlsearch
 set incsearch
+set scrolloff=8
+set updatetime=1000
 let loaded_matchparen = 1
 let mapleader = " "
 
 " Plugins:
 call plug#begin('~/.vim/plugged') "https://github.com/junegunn/vim-plug
 Plug 'mileszs/ack.vim'
-" Plug 'jremmen/vim-ripgrep'
+Plug 'jremmen/vim-ripgrep'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -35,17 +38,8 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 
-" Colorschemes:
 Plug 'rose-pine/vim'
 Plug 'morhetz/gruvbox'
-" Plug 'gruvbox-community/gruvbox'
-" Plug 'sainnhe/gruvbox-material'
-" Plug 'phanviet/vim-monokai-pro'
-" Plug 'flazz/vim-colorschemes'
-" Plug '/home/mpaulson/personal/vim-be-good'
-
-" Afterwards run: source %, :PlugInstall
-" Other commands: :PlugInstall :PlugClean :PlugUpdate
 call plug#end()
 
 
