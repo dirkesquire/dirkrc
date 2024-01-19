@@ -27,7 +27,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'leafgarland/typescript-vim'
 Plug 'vim-utils/vim-man'
-Plug 'lyuts/vim-rtags'
 Plug 'ctrlpvim/ctrlp.vim'
 " Plug 'git@github.com:Valloric/YouCompleteMe.git' " To run with pyenv this requires the following env to be set: export PYTHON_CONFIGURE_OPTS="--enable-framework"
 Plug 'mbbill/undotree'
@@ -40,8 +39,27 @@ Plug 'preservim/nerdtree'
 
 Plug 'rose-pine/vim'
 Plug 'morhetz/gruvbox'
+
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+
 call plug#end()
 
+function!s:on_lsp_buffer_enabled() abort
+    setlocalomnifunc=lsp#complete
+    setlocalsigncolumn=yes
+    nmap <buffer>gi<plug>(lsp-definition)
+    nmap <buffer>gd <plug>(lsp-declaration)
+    nmap <buffer>gr <plug>(lsp-references)
+    nmap <buffer>gl <plug>(lsp-document-diagnostics)
+    nmap <buffer><f2><plug>(lsp-rename)
+    nmap <buffer><f3><plug>(lsp-hover)
+endfunction
+
+augroup lsp_install
+    au!
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
 
 " ColorSchemes:
 colorscheme rosepine
