@@ -42,28 +42,52 @@ Plug 'morhetz/gruvbox'
 
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
 
 call plug#end()
 
-function!s:on_lsp_buffer_enabled() abort
-    setlocalomnifunc=lsp#complete
-    setlocalsigncolumn=yes
-    nmap <buffer>gi<plug>(lsp-definition)
-    nmap <buffer>gd <plug>(lsp-declaration)
-    nmap <buffer>gr <plug>(lsp-references)
-    nmap <buffer>gl <plug>(lsp-document-diagnostics)
-    nmap <buffer><f2><plug>(lsp-rename)
-    nmap <buffer><f3><plug>(lsp-hover)
+
+
+if executable('pylsp')
+    " pip install python-lsp-server
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pylsp',
+        \ 'cmd': {server_info->['pylsp']},
+        \ 'allowlist': ['python'],
+        \ })
+endif
+
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+    nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> gs <plug>(lsp-document-symbol-search)
+    nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+    nmap <buffer> gr <plug>(lsp-references)
+    nmap <buffer> gi <plug>(lsp-implementation)
+    nmap <buffer> gt <plug>(lsp-type-definition)
+    nmap <buffer> <leader>rn <plug>(lsp-rename)
+    nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+    nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+    nmap <buffer> K <plug>(lsp-hover)
+    " nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
+    " nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
+
+    let g:lsp_format_sync_timeout = 1000
+    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+    
+    " refer to doc to add more commands
 endfunction
 
 augroup lsp_install
     au!
+    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
 
-" ColorSchemes:
-colorscheme rosepine
-set background=dark
 
 
 " Keymaps:
@@ -71,10 +95,11 @@ set background=dark
 :imap kl <esc>
 :imap lk <esc>
 
-nnoremap ss :w<CR>
+inoremap <leader>ss <Esc>:w<CR>      " Save
+nnoremap ss :w<CR>                   " Save
 nnoremap qq :q<CR>
 nnoremap <S-Q> :q!<CR>
-
+  
 " if executable('rg')
 "     let g:rg_derive_root='true'
 " endif
@@ -92,7 +117,7 @@ let g:netrw_winsize = 25
  " --smart-case -> Search case insensitive if all lowercase pattern, Search case sensitively otherwise
  let g:ackprg = 'rg --vimgrep --type-not sql --smart-case'
  " Auto close the Quickfix list after pressing '<enter>' on a list item
- let g:ack_autoclose = 0
+ let g:ack_autoclose = 1
  " Any empty ack search will search for the work the cursor is on
  let g:ack_use_cword_for_empty_search = 1
  " Don't jump to first match
@@ -129,7 +154,7 @@ nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <leader>nc :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
-nnoremap <leader>ps :Rg<SPACE>
+nnoremap <leader>rg :Rg<SPACE>
 nnoremap <silent> <leader>= :vertical resize +5<CR>
 nnoremap <silent> <leader>- :vertical resize -5<CR>
 
@@ -137,7 +162,3 @@ nnoremap <silent> <leader>- :vertical resize -5<CR>
 nnoremap <silent> <leader>gr :YcmCompleter GoToReferences<CR>
 
 let g:coc_disable_startup_warning = 1
-
-" Navigate quickfix list with ease
-nnoremap <silent> [q :cprevious<CR>
-nnoremap <silent> ]q :cnext<CR>
