@@ -11,5 +11,6 @@ One way to clone this repository into an existing folder is:
 ```
 git init .
 git remote add origin git@github.com:dirkesquire/dirkrc.git
+git fetch
 git checkout main
 ```
