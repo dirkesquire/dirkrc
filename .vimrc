@@ -95,8 +95,8 @@ augroup END
 :imap kl <esc>
 :imap lk <esc>
 
-inoremap <leader>ss <Esc>:w<CR>      " Save
-nnoremap ss :w<CR>                   " Save
+" inoremap <leader>ss <Esc>:w<CR>
+nnoremap ss :w<CR>
 nnoremap qq :q<CR>
 nnoremap <S-Q> :q!<CR>
   
