@@ -14,7 +14,9 @@ stashlist = stash list --date=short
 [user]
     name = Dirk Roeleveld
     email = dirkroel@gmail.com
-[pull]
-	rebase = true
 [init]
 	defaultBranch = main
+[pull]
+	rebase = true
+[rebase]
+    autostash = true

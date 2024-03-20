@@ -9,8 +9,13 @@ https://github.com/junegunn/vim-plug
 One way to clone this repository into an existing folder is:
 
 ```
+cd ~/
+mv .gitconfig .gitconfig2
 git init .
+git branch -m main
 git remote add origin git@github.com:dirkesquire/dirkrc.git
 git fetch
 git checkout main
+
+echo Manually Merge .gitconfig2
 ```
