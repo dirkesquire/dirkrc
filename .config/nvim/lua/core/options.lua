@@ -19,3 +19,4 @@ vim.cmd [[ set termguicolors ]]
 
 --Line numbers
 vim.wo.number = true
+vim.wo.relativenumber = true

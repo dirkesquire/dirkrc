@@ -1,5 +1,5 @@
 require("mason-lspconfig").setup({
-  ensure_installed = { "lua_ls"  }
+  ensure_installed = { "lua_ls", "tsserver"  }
   -- Removed solargraph, tsserver
 })
 
