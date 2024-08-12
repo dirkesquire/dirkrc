@@ -37,4 +37,9 @@ require("lazy").setup({
     "nvim-telescope/telescope.nvim", tag = "0.1.4",
     dependencies = { "nvim-lua/plenary.nvim" }
   },
+  -- debugger adapater protocol:
+  "mfussenegger/nvim-dap",
+  "nvim-neotest/nvim-nio",
+  "rcarriga/nvim-dap-ui",
+  "mfussenegger/nvim-dap-python",
 })
