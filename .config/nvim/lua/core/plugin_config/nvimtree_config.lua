@@ -1,7 +1,7 @@
 require("nvim-tree").setup({
   sort_by = "case_sensitive",
   view = {
-    width = 30,
+    width = 35,
   },
   renderer = {
     group_empty = true,
@@ -11,5 +11,5 @@ require("nvim-tree").setup({
   },
 })
 
--- vim.keymap.set('n', '<c-n>', ':NvimTreeFindFile<CR>')
-vim.keymap.set('n', '<c-n>', ':NvimTreeToggle<CR>')
+vim.keymap.set('n', '<c-n>', ':NvimTreeFindFileToggle<CR>')
+--vim.keymap.set('n', '<c-n>', ':NvimTreeToggle<CR>')
