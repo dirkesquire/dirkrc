@@ -33,6 +33,7 @@ require("lazy").setup({
     "iamcco/markdown-preview.nvim",
     run = "cd app && npm install",
   },
+  "prettier/vim-prettier",
   {
     "nvim-telescope/telescope.nvim", tag = "0.1.4",
     dependencies = { "nvim-lua/plenary.nvim" }
