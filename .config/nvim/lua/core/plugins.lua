@@ -38,6 +38,25 @@ require("lazy").setup({
     "nvim-telescope/telescope.nvim", tag = "0.1.4",
     dependencies = { "nvim-lua/plenary.nvim" }
   },
+  {
+    "ThePrimeagen/harpoon",
+    dependencies = { "nvim-lua/plenary.nvim" }
+  },
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    opts = {},
+    keys = {
+      {
+        "<leader>?",
+        function()
+          require("which-key").show({ global = false })
+        end,
+        desc = "Buffer Local Keymaps (which-key)",
+      },
+    },
+  },
+
   -- debugger adapater protocol:
   "mfussenegger/nvim-dap",
   "nvim-neotest/nvim-nio",
