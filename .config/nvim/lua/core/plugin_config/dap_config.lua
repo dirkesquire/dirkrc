@@ -1,3 +1,5 @@
+-- require("core.plugin_config.dap_dotnet")
+
 require("dapui").setup()
 
 local dap, dapui = require("dap"), require("dapui")
@@ -20,3 +22,5 @@ vim.keymap.set("n", "<F9>", ':DapToggleBreakpoint<CR>')
 vim.keymap.set("n", "<F10>", ':DapStepOver<CR>')
 vim.keymap.set("n", "<F11>", ':DapStepInto<CR>')
 vim.keymap.set("n", "<F12>", ':DapStepOut<CR>')
+
+vim.keymap.set("n", "<F2>", ':DapToggleRepl<CR>')

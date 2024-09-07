@@ -32,3 +32,6 @@ vim.keymap.set('n', '<leader>do', vim.diagnostic.setloclist, { desc = 'Open diag
 
 --vim.keymap.set('n', 'E', '$')
 --vim.keymap.set('n', 'B', '^')
+
+-- Git Fugitive
+vim.keymap.set('n', '<C-g>', ':Git<CR><C-w>o')

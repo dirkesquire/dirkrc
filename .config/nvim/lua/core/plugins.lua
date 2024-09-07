@@ -62,4 +62,5 @@ require("lazy").setup({
   "nvim-neotest/nvim-nio",
   "rcarriga/nvim-dap-ui",
   "mfussenegger/nvim-dap-python",
+  "nvim-telescope/telescope-dap.nvim",
 })
